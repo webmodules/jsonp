@@ -1,0 +1,13 @@
+{
+  "name": "jsonp",
+  "description": "A sane JSONP implementation.",
+  "version": "0.0.1",
+  "dependencies": {
+    "debug": "*"
+  },
+  "component": {
+    "scripts": {
+      "jsonp": "jsonp.js"
+    }
+  }
+}
