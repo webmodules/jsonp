@@ -1,0 +1,11 @@
+{
+  "name": "jsonp",
+  "repo": "learnboost/jsonp",
+  "description": "A sane JSONP implementation.",
+  "version": "0.0.2",
+  "dependencies": {
+    "visionmedia/debug": "*"
+  },
+  "scripts": ["jsonp.js"],
+  "main": "jsonp.js"
+}
