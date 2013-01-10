@@ -45,6 +45,7 @@ function jsonp (url, opts, fn) {
     , callback = opts.callback || 'callback'
     , timeout = null != opts.timeout ? opts.timeout : 60000
     , enc = encodeURIComponent
+    , target = document.getElementsByTagName('script')[0]
     , script
     , timer
 
@@ -62,7 +63,7 @@ function jsonp (url, opts, fn) {
   }
 
   function cleanup () {
-    document.head.removeChild(script);
+    target.parentNode.removeChild(script);
     window['__jp' + id] = noop;
   }
 
@@ -82,5 +83,5 @@ function jsonp (url, opts, fn) {
   // create script
   script = document.createElement('script');
   script.src = url;
-  document.head.appendChild(script);
+  target.parentNode.insertBefore(script, target);
 };
