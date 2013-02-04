@@ -2,7 +2,6 @@
   "name": "jsonp",
   "description": "A sane JSONP implementation.",
   "version": "0.0.2",
-  "main": "jsonp.js",
   "dependencies": {
     "debug": "*"
   },
