@@ -49,11 +49,8 @@ function jsonp (url, opts, fn) {
   var script;
   var timer;
 
-  // generate a hash of the url
-  var id = 0;
-  for (var i = 0, l = url.length; i < l; i++) {
-    id += url.charCodeAt(i);
-  }
+  // generate a unique id for this request
+  var id = count++;
 
   if (timeout) {
     timer = setTimeout(function () {
