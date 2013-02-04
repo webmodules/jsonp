@@ -21,7 +21,7 @@ var count = 0;
  * Noop function.
  */
 
-function noop () {};
+function noop(){};
 
 /**
  * JSONP handler
@@ -35,7 +35,7 @@ function noop () {};
  * @param {Function} optional callback
  */
 
-function jsonp (url, opts, fn) {
+function jsonp(url, opts, fn){
   if ('function' == typeof opts) {
     fn = opts;
     opts = {};
@@ -53,18 +53,18 @@ function jsonp (url, opts, fn) {
   var id = count++;
 
   if (timeout) {
-    timer = setTimeout(function () {
+    timer = setTimeout(function(){
       cleanup();
       fn && fn(new Error('Timeout'));
     }, timeout);
   }
 
-  function cleanup () {
+  function cleanup(){
     target.parentNode.removeChild(script);
     window['__jp' + id] = noop;
   }
 
-  window['__jp' + id] = function (data) {
+  window['__jp' + id] = function(data){
     debug('jsonp got', data);
     if (timer) clearTimeout(timer);
     cleanup();
