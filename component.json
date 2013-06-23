@@ -4,8 +4,11 @@
   "description": "A sane JSONP implementation.",
   "version": "0.0.3",
   "dependencies": {
-    "visionmedia/debug": "*"
+    "visionmedia/debug": "*",
+    "component/indexof": "*"
   },
-  "scripts": ["index.js"],
+  "scripts": [
+    "index.js"
+  ],
   "main": "index.js"
 }
