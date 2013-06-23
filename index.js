@@ -72,7 +72,7 @@ function jsonp(url, opts, fn){
   };
 
   // add qs component
-  url += (~indexof(url, '?') ? '&' : '?') + param + '=' + enc('__jp' + id + '');
+  url += (~index(url, '?') ? '&' : '?') + param + '=' + enc('__jp' + id + '');
   url = url.replace('?&', '?');
 
   debug('jsonp req "%s"', url);
