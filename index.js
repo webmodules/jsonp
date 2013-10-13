@@ -40,8 +40,8 @@ function jsonp(url, opts, fn){
     fn = opts;
     opts = {};
   }
+  if (!opts) opts = {};
 
-  var opts = opts || {};
   var param = opts.param || 'callback';
   var timeout = null != opts.timeout ? opts.timeout : 60000;
   var enc = encodeURIComponent;
@@ -55,7 +55,7 @@ function jsonp(url, opts, fn){
   if (timeout) {
     timer = setTimeout(function(){
       cleanup();
-      fn && fn(new Error('Timeout'));
+      if (fn) fn(new Error('Timeout'));
     }, timeout);
   }
 
@@ -68,7 +68,7 @@ function jsonp(url, opts, fn){
     debug('jsonp got', data);
     if (timer) clearTimeout(timer);
     cleanup();
-    fn && fn(null, data);
+    if (fn) fn(null, data);
   };
 
   // add qs component
