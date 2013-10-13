@@ -9,7 +9,7 @@ A simple JSONP implementation.
 
 - `url` (`String`) url to fetch
 - `opts` (`Object`), optional
-  - `param` (`String`) name of the query string component to specify
+  - `param` (`String`) name of the query string parameter to specify
     the callback (defaults to `callback`)
   - `timeout` (`Number`) how long after a timeout error is emitted. `0` to
     disable (defaults to `60000`)
