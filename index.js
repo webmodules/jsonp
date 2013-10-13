@@ -3,7 +3,7 @@
  */
 
 var debug = require('debug')('jsonp');
-var index = require('indexof');
+var indexof = require('indexof');
 
 /**
  * Module exports.
@@ -72,7 +72,7 @@ function jsonp(url, opts, fn){
   };
 
   // add qs component
-  url += (~index(url, '?') ? '&' : '?') + param + '=' + enc('__jp' + id + '');
+  url += (~indexof(url, '?') ? '&' : '?') + param + '=' + enc('__jp' + id + '');
   url = url.replace('?&', '?');
 
   debug('jsonp req "%s"', url);
