@@ -20,7 +20,7 @@ var count = 0;
  * Noop function.
  */
 
-function noop(){};
+function noop(){}
 
 /**
  * JSONP handler
@@ -80,4 +80,4 @@ function jsonp(url, opts, fn){
   script = document.createElement('script');
   script.src = url;
   target.parentNode.insertBefore(script, target);
-};
+}
