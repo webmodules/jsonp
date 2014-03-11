@@ -41,6 +41,7 @@ function jsonp(url, opts, fn){
   }
   if (!opts) opts = {};
 
+  var prefix = opts.prefix || '__jp';
   var param = opts.param || 'callback';
   var timeout = null != opts.timeout ? opts.timeout : 60000;
   var enc = encodeURIComponent;
@@ -49,7 +50,7 @@ function jsonp(url, opts, fn){
   var timer;
 
   // generate a unique id for this request
-  var id = count++;
+  var id = prefix + (count++);
 
   if (timeout) {
     timer = setTimeout(function(){
@@ -60,10 +61,10 @@ function jsonp(url, opts, fn){
 
   function cleanup(){
     script.parentNode.removeChild(script);
-    window['__jp' + id] = noop;
+    window[id] = noop;
   }
 
-  window['__jp' + id] = function(data){
+  window[id] = function(data){
     debug('jsonp got', data);
     if (timer) clearTimeout(timer);
     cleanup();
@@ -71,7 +72,7 @@ function jsonp(url, opts, fn){
   };
 
   // add qs component
-  url += (~url.indexOf('?') ? '&' : '?') + param + '=' + enc('__jp' + id + '');
+  url += (~url.indexOf('?') ? '&' : '?') + param + '=' + enc(id);
   url = url.replace('?&', '?');
 
   debug('jsonp req "%s"', url);
