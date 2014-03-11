@@ -60,7 +60,8 @@ function jsonp(url, opts, fn){
   }
 
   function cleanup(){
-    script.parentNode.removeChild(script);
+    var node = script.parentNode;
+    if (node) node.removeChild(script);
     window['__jp' + id] = noop;
   }
 
