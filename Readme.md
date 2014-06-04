@@ -27,9 +27,11 @@ $ component install LearnBoost/jsonp
     the callback (defaults to `callback`)
   - `timeout` (`Number`) how long after a timeout error is emitted. `0` to
     disable (defaults to `60000`)
+  - `prefix` (`String`) prefix for the global callback functions that
+    handle jsonp responses (defaults to `__jp`)
 - `fn` callback
 
-The callback is called with `err, data` parameters. 
+The callback is called with `err, data` parameters.
 
 If it times out, the `err` will be an `Error` object whose `message` is
 `Timeout`.
