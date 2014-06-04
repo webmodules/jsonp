@@ -36,6 +36,9 @@ The callback is called with `err, data` parameters.
 If it times out, the `err` will be an `Error` object whose `message` is
 `Timeout`.
 
+Returns a function that, when called, will cancel the in-progress jsonp request
+(`fn` won't be called).
+
 ## License
 
 MIT
