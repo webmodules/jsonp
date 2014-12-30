@@ -1,4 +1,11 @@
 
+0.1.0 / 2014-12-30
+==================
+
+  * Make sure `script.parentNode` exists before removing the script element (#12, @azer)
+  * Return function to cancel in-progress jsonp request (#11, @feross)
+  * add documentation for `prefix` option (#10, @feross)
+
 0.0.4 / 2014-03-11
 ==================
 

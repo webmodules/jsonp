@@ -1,7 +1,7 @@
 {
   "name": "jsonp",
   "description": "A sane JSONP implementation.",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "dependencies": {
     "debug": "*"
   },
