@@ -11,6 +11,20 @@ Install for node.js or browserify using `npm`:
 $ npm install jsonp
 ```
 
+Install for component(1) using `component`:
+
+``` bash
+$ component install LearnBoost/jsonp
+```
+
+Install for browser using `bower`:
+
+``` bash
+$ bower install jsonp
+```
+
+
+>>>>>>> change readme
 ## API
 
 ### jsonp(url, opts, fn)
