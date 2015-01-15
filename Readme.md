@@ -17,6 +17,13 @@ Install for component(1) using `component`:
 $ component install LearnBoost/jsonp
 ```
 
+Install for browser using `bower`:
+
+``` bash
+$ bower install jsonp
+```
+
+
 ## API
 
 ### jsonp(url, opts, fn)
