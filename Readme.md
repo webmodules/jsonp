@@ -23,8 +23,6 @@ Install for browser using `bower`:
 $ bower install jsonp
 ```
 
-
->>>>>>> change readme
 ## API
 
 ### jsonp(url, opts, fn)
