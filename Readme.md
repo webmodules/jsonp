@@ -3,6 +3,8 @@
 
 A simple JSONP implementation.
 
+[![saucelabs][saucelabs-image]][saucelabs-url]
+
 ## Installation
 
 Install for node.js or browserify using `npm`:
@@ -36,3 +38,6 @@ Returns a function that, when called, will cancel the in-progress jsonp request
 ## License
 
 MIT
+
+[saucelabs-image]: https://saucelabs.com/browser-matrix/jsonp.svg
+[saucelabs-url]: https://saucelabs.com/u/jsonp
