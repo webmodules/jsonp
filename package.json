@@ -13,5 +13,13 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/LearnBoost/jsonp.git"
+  },
+  "devDependencies": {
+    "tape": "^3.5.0",
+    "zuul": "^1.17.1"
+  },
+  "scripts": {
+    "test": "zuul -- test/*.js",
+    "test-local": "zuul --local -- test/*.js"
   }
 }
