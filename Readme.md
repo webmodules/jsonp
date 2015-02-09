@@ -37,6 +37,8 @@ $ bower install jsonp
     disable (defaults to `60000`)
   - `prefix` (`String`) prefix for the global callback functions that
     handle jsonp responses (defaults to `__jp`)
+  - `cbName` (`String`) name of the global callback functions that
+    handle jsonp responses (defaults to `prefix` + incremented counter)
 - `fn` callback
 
 The callback is called with `err, data` parameters.

@@ -28,3 +28,16 @@ test('timeout', function (t) {
     t.ok(err instanceof Error);
   });
 });
+
+test('named callback', function (t) {
+  t.plan(1);
+  var obj = {
+    beep: 'boop',
+    yo: 'dawg'
+  };
+  var q = querystring.encode(obj);
+  jsonp(ENDPOINT + '?' + q, { cbName: 'namedCb' }, function (err, data) {
+    if (err) throw err;
+    t.deepEqual(data, obj);
+  });
+});
