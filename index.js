@@ -28,7 +28,7 @@ function noop(){}
  * Options:
  *  - param {String} qs parameter (`callback`)
  *  - prefix {String} qs parameter (`__jp`)
- *  - cbName {String} qs parameter (`prefix` + incr)
+ *  - name {String} qs parameter (`prefix` + incr)
  *  - timeout {Number} how long after a timeout error is emitted (`60000`)
  *
  * @param {String} url
@@ -47,7 +47,7 @@ function jsonp(url, opts, fn){
 
   // use the callback name that was passed if one was provided.
   // otherwise generate a unique name by incrementing our counter.
-  var id = opts.cbName || (prefix + (count++));
+  var id = opts.name || (prefix + (count++));
 
   var param = opts.param || 'callback';
   var timeout = null != opts.timeout ? opts.timeout : 60000;
