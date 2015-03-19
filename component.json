@@ -1,6 +1,6 @@
 {
   "name": "jsonp",
-  "repo": "learnboost/jsonp",
+  "repo": "webmodules/jsonp",
   "description": "A sane JSONP implementation.",
   "version": "0.1.0",
   "dependencies": {
