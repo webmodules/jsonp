@@ -27,6 +27,8 @@ function noop(){}
  *
  * Options:
  *  - param {String} qs parameter (`callback`)
+ *  - prefix {String} qs parameter (`__jp`)
+ *  - name {String} qs parameter (`prefix` + incr)
  *  - timeout {Number} how long after a timeout error is emitted (`60000`)
  *
  * @param {String} url
@@ -42,6 +44,11 @@ function jsonp(url, opts, fn){
   if (!opts) opts = {};
 
   var prefix = opts.prefix || '__jp';
+
+  // use the callback name that was passed if one was provided.
+  // otherwise generate a unique name by incrementing our counter.
+  var id = opts.name || (prefix + (count++));
+
   var param = opts.param || 'callback';
   var timeout = null != opts.timeout ? opts.timeout : 60000;
   var enc = encodeURIComponent;
@@ -49,8 +56,6 @@ function jsonp(url, opts, fn){
   var script;
   var timer;
 
-  // generate a unique id for this request
-  var id = prefix + (count++);
 
   if (timeout) {
     timer = setTimeout(function(){
