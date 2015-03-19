@@ -1,4 +1,12 @@
 
+0.2.0 / 2015-03-18
+==================
+
+ * add `bower.json`
+ * add travis/zuul/saucelabs testing
+ * add support for custom callback `name`
+ * pin `debug` dep
+
 0.1.0 / 2014-12-30
 ==================
 
