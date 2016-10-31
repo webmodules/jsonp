@@ -84,6 +84,14 @@ function jsonp(url, opts, fn){
 
   // add qs component
   url += (~url.indexOf('?') ? '&' : '?') + param + '=' + enc(id);
+  if (opts.query) {
+    for (var key in opts.query) {
+      if (url !== '') {
+        url += '&';
+      }
+      url += key + '=' + encodeURIComponent(opts.query[key]);
+    }
+  }
   url = url.replace('?&', '?');
 
   debug('jsonp req "%s"', url);
