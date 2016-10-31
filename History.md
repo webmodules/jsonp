@@ -1,4 +1,10 @@
 
+0.2.1 / 2016-10-31
+==================
+
+  * loose debug version (#21, @roderickhsiao)
+  * component: update "repo" field
+
 0.2.0 / 2015-03-18
 ==================
 
