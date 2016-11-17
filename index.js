@@ -91,6 +91,11 @@ function jsonp(url, opts, fn){
   // create script
   script = document.createElement('script');
   script.src = url;
+  script.onerror = function() {
+    cleanup();
+    if (fn) fn(new Error('Timeout'));
+  }
+
   target.parentNode.insertBefore(script, target);
 
   return cancel;
