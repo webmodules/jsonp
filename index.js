@@ -61,6 +61,7 @@ function jsonp(url, opts, fn){
     timer = setTimeout(function(){
       cleanup();
       if (fn) fn(new Error('Timeout'));
+      if (errorHandler) errorHandler(new Error('Timeout'))
     }, timeout);
   }
 
@@ -80,6 +81,7 @@ function jsonp(url, opts, fn){
     debug('jsonp got', data);
     cleanup();
     if (fn) fn(null, data);
+    if (fullfillHandler) fullfillHandler(data)
   };
 
   // add qs component
@@ -93,5 +95,20 @@ function jsonp(url, opts, fn){
   script.src = url;
   target.parentNode.insertBefore(script, target);
 
+  // promise/A
+  var fullfillHandler;
+  var errorHandler;
+  if (!fn && !cancel.then && !cancel.catch) {
+    cancel.then = function(callback) {
+      if (typeof callback !== 'function') return ;
+      fullfillHandler = callback
+      return this
+    };
+    cancel.catch = function(callback) {
+      if (typeof callback !== 'function') return ;
+      errorHandler = callback
+      return this
+    };
+  }
   return cancel;
 }
