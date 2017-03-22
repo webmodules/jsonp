@@ -18,6 +18,22 @@ test('basic jsonp', function (t) {
   });
 });
 
+test('promise jsonp', function(t) {
+  t.plan(1);
+  var obj = {
+    beep: 'boop',
+    yo: 'dawg'
+  };
+  var q = querystring.encode(obj);
+  jsonp(ENDPOINT + '?' + q)
+    .then(function(data) {
+      t.deepEqual(data, obj);
+    })
+    .catch(function(err) {
+      throw err
+    });
+});
+
 test('timeout', function (t) {
   t.plan(1);
   var obj = {
