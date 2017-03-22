@@ -49,6 +49,20 @@ If it times out, the `err` will be an `Error` object whose `message` is
 Returns a function that, when called, will cancel the in-progress jsonp request
 (`fn` won't be called).
 
+### Promise/A
+
+When `fn` is not passed
+
+```js
+jsonp(url, opts)
+  .then(function(data) {
+    // todo get data from server jsonp result
+  })
+  .catch(function(error) {
+    // error for timeout
+  })
+```
+
 ## License
 
 MIT
