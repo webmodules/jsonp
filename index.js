@@ -37,61 +37,66 @@ function noop(){}
  */
 
 function jsonp(url, opts, fn){
-  if ('function' == typeof opts) {
-    fn = opts;
-    opts = {};
-  }
-  if (!opts) opts = {};
-
-  var prefix = opts.prefix || '__jp';
-
-  // use the callback name that was passed if one was provided.
-  // otherwise generate a unique name by incrementing our counter.
-  var id = opts.name || (prefix + (count++));
-
-  var param = opts.param || 'callback';
-  var timeout = null != opts.timeout ? opts.timeout : 60000;
-  var enc = encodeURIComponent;
-  var target = document.getElementsByTagName('script')[0] || document.head;
-  var script;
-  var timer;
-
-
-  if (timeout) {
-    timer = setTimeout(function(){
-      cleanup();
-      if (fn) fn(new Error('Timeout'));
-    }, timeout);
-  }
-
-  function cleanup(){
-    if (script.parentNode) script.parentNode.removeChild(script);
-    window[id] = noop;
-    if (timer) clearTimeout(timer);
-  }
-
-  function cancel(){
-    if (window[id]) {
-      cleanup();
+    if ('function' == typeof opts) {
+        fn = opts;
+        opts = {};
     }
-  }
+    if (!opts) opts = {};
 
-  window[id] = function(data){
-    debug('jsonp got', data);
-    cleanup();
-    if (fn) fn(null, data);
-  };
+    var prefix = opts.prefix || '__jp';
 
-  // add qs component
-  url += (~url.indexOf('?') ? '&' : '?') + param + '=' + enc(id);
-  url = url.replace('?&', '?');
+    // use the callback name that was passed if one was provided.
+    // otherwise generate a unique name by incrementing our counter.
+    var id = opts.name || (prefix + (count++));
 
-  debug('jsonp req "%s"', url);
+    var param = opts.param || 'callback';
+    var timeout = null != opts.timeout ? opts.timeout : 60000;
+    var enc = encodeURIComponent;
+    var target = document.getElementsByTagName('script')[0] || document.head;
+    var script;
+    var timer;
+    var data = !!opts.data ? opts.data : {};
 
-  // create script
-  script = document.createElement('script');
-  script.src = url;
-  target.parentNode.insertBefore(script, target);
+    if (timeout) {
+        timer = setTimeout(function(){
+            cleanup();
+            if (fn) fn(new Error('Timeout'));
+        }, timeout);
+    }
 
-  return cancel;
+    function cleanup(){
+        if (script.parentNode) script.parentNode.removeChild(script);
+        window[id] = noop;
+        if (timer) clearTimeout(timer);
+    }
+
+    function cancel(){
+        if (window[id]) {
+            cleanup();
+        }
+    }
+
+    window[id] = function(data){
+        debug('jsonp got', data);
+        cleanup();
+        if (fn) fn(null, data);
+    };
+
+    // add qs component
+    url += (~url.indexOf('?') ? '&' : '?') + param + '=' + enc(id);
+    url = url.replace('?&', '?');
+
+    if (data) {
+        for (key in data) {
+            url += "&" + key + "=" + data[key];
+        }
+    }
+    debug('jsonp req "%s"', url);
+
+    // create script
+    script = document.createElement('script');
+    script.src = url;
+    target.parentNode.insertBefore(script, target);
+
+    return cancel;
 }
