@@ -46,8 +46,10 @@ function jsonp(url, opts, fn){
   var prefix = opts.prefix || '__jp';
 
   // use the callback name that was passed if one was provided.
-  // otherwise generate a unique name by incrementing our counter.
-  var id = opts.name || (prefix + (count++));
+  // otherwise generate a unique name by using the current timestamp
+  var currentTime = new Date().getTime();
+  var id = opts.name || (prefix + currentTime);
+  count++;
 
   var param = opts.param || 'callback';
   var timeout = null != opts.timeout ? opts.timeout : 60000;
