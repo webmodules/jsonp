@@ -91,6 +91,9 @@ function jsonp(url, opts, fn){
   // create script
   script = document.createElement('script');
   script.src = url;
+  jsonpScript.addEventListener('error',function(event){
+    window[id](event);
+  });
   target.parentNode.insertBefore(script, target);
 
   return cancel;
